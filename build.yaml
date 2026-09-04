@@ -18,15 +18,19 @@
 #     artifact-name: corne_left_with_studio
 #
 ---
+---
 include:
-  # Settings reset - flash this first to clear stored Bluetooth name and settings
+  # Firmware de limpeza; não é necessário gravá-lo agora.
   - board: nice_nano_v2
     shield: settings_reset
     artifact-name: settings_reset_nice_nano
 
-  # Corne keyboard halves with built-in OLED displays
+  # Metade esquerda: teste de Bluetooth sem PHY 2M.
   - board: nice_nano_v2
     shield: corne_hw_left
     snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_BT_CTLR_PHY_2M=n
+
+  # Metade direita: sem alterações.
   - board: nice_nano_v2
     shield: corne_hw_right
